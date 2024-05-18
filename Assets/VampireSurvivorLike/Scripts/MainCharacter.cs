@@ -12,22 +12,23 @@ public class MainCharacter : MonoBehaviour
     private GameObject _arrowsToDelete;
     public Camera _mainCamera;
     private bool _isMolletteButtonDown = false;
+    private bool _stop = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Debug.Log("ok");
+        _stop = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         //Click Detection
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(2))
         {
             _isMolletteButtonDown = true;
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(2))
         {
             _isMolletteButtonDown = false;
         }
@@ -42,9 +43,13 @@ public class MainCharacter : MonoBehaviour
             Destroy(_arrowsToDelete);
             Instantiate(_arrows, _target, transform.rotation);
             _isMolletteButtonDown = false;
+            _stop = false;
         }
 
+        if (_stop == false)
+        {
         transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
+        }
         
         if (transform.position == _target)
         {
