@@ -13,13 +13,6 @@ public class MainCharacter : MonoBehaviour
     public Camera _mainCamera;
     private bool _isMolletteButtonDown = false;
     private bool _stop = false;
-    private Rigidbody2D _myRigidBody;
-
-
-    void Start()
-    {
-        _myRigidBody = GetComponent<Rigidbody2D>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -44,15 +37,10 @@ public class MainCharacter : MonoBehaviour
             Destroy(_arrowsToDelete);
             Instantiate(_arrows, _target, transform.rotation);
             _isMolletteButtonDown = false;
-            //Move
-            _myRigidBody.velocity = transform.right*_speed;
         }
 
-        //Rotate
-        Vector3 dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
+        transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
+        
         if (transform.position == _target)
         {
             _arrowsToDelete = GameObject.FindGameObjectWithTag("ArrowPointer");
