@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
-public class Ennemy_ZombieAI : MonoBehaviour
+public class Enemy_BatAI : MonoBehaviour
 {
 
     public Transform _player;
