@@ -44,6 +44,7 @@ public class MainCharacter : MonoBehaviour
             Destroy(_arrowsToDelete);
             Instantiate(_arrows, _target, transform.rotation);
             _isMolletteButtonDown = false;
+            _animator.SetBool("IsWalking", true);
             RotatePlayerAnimation(_target.x - transform.position.x, _target.y - transform.position.y);
             
         }
@@ -57,6 +58,7 @@ public class MainCharacter : MonoBehaviour
         if (transform.position == _target)
         {
             _arrowsToDelete = GameObject.FindGameObjectWithTag("ArrowPointer");
+            _animator.SetBool("IsWalking", false);
             Destroy(_arrowsToDelete);
         }
     }
