@@ -117,13 +117,10 @@ public class LineSimplification : MonoBehaviour
         
         // Output mouse positions to the console
         pointList.Add(worldPosition);
-        Debug.Log($"World Position: {worldPosition}");   
         }
         
         else if(pointList.Count>1){
-            foreach( var x in pointList) {
-                Debug.Log( x.ToString());
-                }
+
             List<Point> pointListOut = new List<Point>();
             RamerDouglasPeucker(pointList, 1.0f, pointListOut);
 

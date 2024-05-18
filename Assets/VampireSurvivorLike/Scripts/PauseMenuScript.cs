@@ -9,7 +9,7 @@ public class PauseMenuScript : MonoBehaviour
     public void Pause()
     {
         pauseMenu.SetActive(true);
-        Time.timeScale=0.2f;
+        Time.timeScale=0;
     }
     public void Resume()
     {
