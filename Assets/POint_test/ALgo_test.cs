@@ -10,6 +10,8 @@ using Point = UnityEngine.Vector2;
 public class LineSimplification : MonoBehaviour
 {
     public Camera _mainCamera;
+    private Point _FirstPoint;
+    private Point _LastPoint;
     private List<Point> pointList = new List<Point>();
     // Using Vector2 for points
      private static double PerpendicularDistance(Point pt, Point lineStart, Point lineEnd)
@@ -82,7 +84,15 @@ public class LineSimplification : MonoBehaviour
             output.Add(pointList[pointList.Count - 1]);
         }
     }
-
+    private static void VerificationCarre(List<Point> PointList){
+        if((Math.Abs(PointList[0].x - PointList[1].x) < 0.5) || (Math.Abs(PointList[0].y - PointList[1].y) < 0.5) && (Math.Abs(PointList[2].x - PointList[1].x) < 0.5) || (Math.Abs(PointList[2].y - PointList[1].y) < 0.5) 
+            && (Math.Abs(PointList[2].x - PointList[3].x) < 0.5) || (Math.Abs(PointList[2].y - PointList[3].y) < 0.5) && (Math.Abs(PointList[3].x - PointList[0].x) < 0.5) || (Math.Abs(PointList[3].y - PointList[0].y) < 0.5)){
+            Debug.Log("IS square");
+        }
+        else {
+            Debug.Log("Not square");
+        }
+    }
     private void Start()
     {
 
@@ -118,10 +128,30 @@ public class LineSimplification : MonoBehaviour
             RamerDouglasPeucker(pointList, 1.0f, pointListOut);
 
             Debug.Log("Points remaining after simplification:");
+
             foreach (var p in pointListOut)
             {
                 Debug.Log(p);
             }
+            Debug.Log("premer et dernier pts");
+            _FirstPoint = pointListOut[0];
+            _LastPoint = pointListOut[^1];
+            if(Math.Abs(_FirstPoint.x-_LastPoint.x) < 0.5 && Math.Abs(_FirstPoint.y-_LastPoint.y) < 0.5){
+            if(pointListOut.Count-1 == 4){
+                pointListOut.RemoveAt(pointListOut.Count-1);
+                VerificationCarre(pointListOut);
+            }
+            else if(pointListOut.Count-1 == 3){
+                Debug.Log("Is triangle");
+            }
+            else{
+                Debug.Log("WTF are u!!");
+            }
+            }
+            if(pointListOut.Count == 2){
+                Debug.Log("Is Line");
+            }
+            
             pointList.Clear();
 
         }
