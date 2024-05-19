@@ -19,6 +19,11 @@ public class LineSimplification : MonoBehaviour
     public GameObject lightning;
     public GameObject Carre;
     public Transform playerTransform;
+
+    [SerializeField] GameObject BatKillZone;
+    // Start is called before the first frame update
+ 
+        
     
     private static double PerpendicularDistance(Point pt, Point lineStart, Point lineEnd)
     {
@@ -143,6 +148,8 @@ private void Start(){
                 else if(pointListOut.Count-1 == 3){
                     Debug.Log("Is triangle");
                     Instantiate(lightning,playerTransform.position,playerTransform.rotation);
+                    BatKillZone.SetActive(true);
+
                     
 				}
                 else{
