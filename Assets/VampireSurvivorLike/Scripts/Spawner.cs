@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -87,7 +88,14 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        _difficulty = LogicScriptMenu._Difficulté;
+        if (LogicScriptMenu._Difficulté != 0)
+        {
+            _difficulty = LogicScriptMenu._Difficulté;
+        }
+        else
+        {
+            _difficulty = 1;
+        }
         _wave = 1;
         _zombieList.Add(_zombie1);
         _zombieList.Add(_zombie2);
@@ -124,32 +132,32 @@ public class Spawner : MonoBehaviour
             Debug.Log(_difficulty + "dif");
             _waveUIText.text = "Wave " + _wave;
             Instantiate(_waveUIText, transform.position, transform.rotation, _cameraCanvas.transform);
-            for(i=0; i< (_zombieList[_wave-1] * _difficulty); i++)
+            for(i=0; i< (_zombieList[_wave-1] * _difficulty ); i++)
             {
-                _spawnerChoice = Random.Range(0,3);
+                _spawnerChoice = UnityEngine.Random.Range(0,3);
                 if (_spawnerChoice == 0 || _spawnerChoice == 1)
                 {
                     Instantiate(_zombie, new Vector3(_spawnerList[_spawnerChoice].transform.position.x, 
-                    _spawnerList[_spawnerChoice].transform.position.y + Random.Range(10,-10), transform.position.z), transform.rotation);
+                    _spawnerList[_spawnerChoice].transform.position.y + UnityEngine.Random.Range(10,-10), transform.position.z), transform.rotation);
                 }
                 else
                 {
                     Instantiate(_zombie, new Vector3(_spawnerList[_spawnerChoice].transform.position.x 
-                    + Random.Range(18,-18), _spawnerList[_spawnerChoice].transform.position.y , transform.position.z), transform.rotation);
+                    + UnityEngine.Random.Range(18,-18), _spawnerList[_spawnerChoice].transform.position.y , transform.position.z), transform.rotation);
                 }
             }
             for(i=0; i< (_batList[_wave-1] * _difficulty); i++)
             {
-                _spawnerChoice = Random.Range(0,3);
+                _spawnerChoice = UnityEngine.Random.Range(0,3);
                 if (_spawnerChoice == 0 || _spawnerChoice == 1)
                 {
                     Instantiate(_bat, new Vector3(_spawnerList[_spawnerChoice].transform.position.x, 
-                    _spawnerList[_spawnerChoice].transform.position.y + Random.Range(10,-10), transform.position.z), transform.rotation);
+                    _spawnerList[_spawnerChoice].transform.position.y + UnityEngine.Random.Range(10,-10), transform.position.z), transform.rotation);
                 }
                 else
                 {
                     Instantiate(_bat, new Vector3(_spawnerList[_spawnerChoice].transform.position.x 
-                    + Random.Range(18,-18), _spawnerList[_spawnerChoice].transform.position.y , transform.position.z), transform.rotation);
+                    + UnityEngine.Random.Range(18,-18), _spawnerList[_spawnerChoice].transform.position.y , transform.position.z), transform.rotation);
                 }
             }
             _time = 0;  
