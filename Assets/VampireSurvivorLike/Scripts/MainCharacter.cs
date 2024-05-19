@@ -186,7 +186,7 @@ public class MainCharacter : MonoBehaviour
         }
     }
 
-    private void UpdateHealthBar(){
+    public void UpdateHealthBar(){
         float targetFillAmount = _health / _maxHealth;
         _HealthBarFill.fillAmount = targetFillAmount;
     }
