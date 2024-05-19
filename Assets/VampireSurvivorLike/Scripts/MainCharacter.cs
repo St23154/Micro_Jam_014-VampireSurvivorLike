@@ -141,6 +141,18 @@ public class MainCharacter : MonoBehaviour
             {
                 _levelupScript.MoreLevel();
             }
+            if (xp == 150)
+            {
+                _levelupScript.MoreLevel();
+            }
+            if (xp == 300)
+            {
+                _levelupScript.MoreLevel();
+            }
+            if (xp == 750)
+            {
+                _levelupScript.MoreLevel();
+            }
         }
 
         if (ZOMBIE != null)

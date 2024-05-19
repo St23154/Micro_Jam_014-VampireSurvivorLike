@@ -42,7 +42,7 @@ public class LevelUp : MonoBehaviour
 
     void Start()
     {
-        _effectsList = new List<string>{"speed", "damage", "rotation", "tirfois3"};
+        _effectsList = new List<string>{"Damage", "Speed", "RateOfFire", "Life", "TimeToDraw"};
     }
 
     public void CloseLevelUp()

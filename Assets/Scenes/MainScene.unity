@@ -552,7 +552,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 44903996}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 757397146}
+        m_TargetAssemblyTypeName: LevelUp, Assembly-CSharp
+        m_MethodName: Choix2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 757397146}
+        m_TargetAssemblyTypeName: LevelUp, Assembly-CSharp
+        m_MethodName: CloseLevelUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &44903996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,8 +707,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -27087,6 +27111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _max_time: 1
   _elapsedTime: 0
+  _slowness: 1
   _cooldown: 0
   _HealthBarFill: {fileID: 227614469}
   StopTime: {fileID: 391591565}
@@ -27122,6 +27147,15 @@ MonoBehaviour:
   text2: {fileID: 1343836460}
   text3: {fileID: 2113245451}
   _effectsList: []
+  _mainPlayer: {fileID: 2129376933}
+  _bullet: {fileID: 6519814949077020844, guid: b389fd6a681f8444c86834e210f9c345, type: 3}
+  _gun: {fileID: 631274020}
+  _logicManager: {fileID: 757397143}
+  _damageToAdd: 10
+  _speedToAdd: 10
+  _bulletPerSecondToAdd: 3
+  _healthToAdd: 30
+  _slownessToAdd: 3
 --- !u!114 &757397147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37189,7 +37223,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1100216023}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 757397146}
+        m_TargetAssemblyTypeName: LevelUp, Assembly-CSharp
+        m_MethodName: Choix3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 757397146}
+        m_TargetAssemblyTypeName: LevelUp, Assembly-CSharp
+        m_MethodName: CloseLevelUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1100216023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42299,8 +42357,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -47332,7 +47390,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1536783514}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 757397146}
+        m_TargetAssemblyTypeName: LevelUp, Assembly-CSharp
+        m_MethodName: Choix1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 757397146}
+        m_TargetAssemblyTypeName: LevelUp, Assembly-CSharp
+        m_MethodName: CloseLevelUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1536783514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114870,8 +114952,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 150
+  m_fontSizeBase: 150
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
