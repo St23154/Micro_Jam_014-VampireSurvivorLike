@@ -50,13 +50,15 @@ public class LogicScript : MonoBehaviour
         
     }
 
-public void TimeF(){
+public void TimeF()
+{
      _elapsedTime += Time.deltaTime;     
     UpdateHealthBar(); 
           
 }
 
-    public void UpdateHealthBar(){
+public void UpdateHealthBar()
+{
         float targetFillAmount = 1 - _elapsedTime;
         Debug.Log(_elapsedTime +" ze "+ targetFillAmount);
         _HealthBarFill.fillAmount = targetFillAmount;
