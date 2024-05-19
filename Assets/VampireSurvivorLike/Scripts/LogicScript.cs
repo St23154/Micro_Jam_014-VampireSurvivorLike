@@ -17,6 +17,11 @@ public class LogicScript : MonoBehaviour
 
     // Update is called once per frame
     // Method to slow down time and activate StopTime
+
+    void Start()
+    {
+        _slowness = 1;
+    }
     public void Slow()
     {
         StopTime.SetActive(true);

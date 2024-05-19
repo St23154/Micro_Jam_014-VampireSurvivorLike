@@ -13,7 +13,10 @@ public class GunPivotScript : MonoBehaviour
     private Transform _target;
     public LayerMask _ennemyMask;
 
-
+    void Start()
+    {
+        _bulletPerSecond = 2f;
+    }
     // Update is called once per frame
     void Update()
     {

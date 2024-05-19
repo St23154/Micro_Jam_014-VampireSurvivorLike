@@ -33,7 +33,9 @@ public class MainCharacter : MonoBehaviour
 
     void Start()
     {
+        _health = 100;
         _maxHealth = _health;
+        _speed = 2f;
     }
     // Update is called once per frame
     void Update()

@@ -5,17 +5,15 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float _speed = 40;
-    public float _damageAmount;
+    public float _damageAmount = 20;
     public float _timeUntilDestroying;
     private float _time = 0.0f;
     private Rigidbody2D _myRigidBody;
-    [SerializeField]
-    private GameObject _greenParticles;
-    private GameObject _cameraShakeScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        _damageAmount = 20;
         _myRigidBody = GetComponent<Rigidbody2D>();
         _myRigidBody.velocity = transform.right*_speed;
     }
@@ -48,11 +46,6 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);     
         }
-    }
-
-    public void AddDamage()
-    {
-        _damageAmount += 100;
     }
 
 }
