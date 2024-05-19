@@ -22,6 +22,8 @@ public class Spawner : MonoBehaviour
     private List<GameObject> _spawnerList = new List<GameObject>();
     private int _spawnerChoice;
     private int _wave;
+    private float _difficulty;
+    public GameObject _logicManager;
 
     [Header("Wave - 1")]
     [SerializeField]
@@ -85,6 +87,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
+        _difficulty = LogicScriptMenu._Difficulté;
         _wave = 1;
         _zombieList.Add(_zombie1);
         _zombieList.Add(_zombie2);
@@ -118,9 +121,10 @@ public class Spawner : MonoBehaviour
         _time += Time.deltaTime;
         if (_time >= _timeBetweenEachWaves)
         {
+            Debug.Log(_difficulty + "dif");
             _waveUIText.text = "Wave " + _wave;
             Instantiate(_waveUIText, transform.position, transform.rotation, _cameraCanvas.transform);
-            for(i=0; i<= _zombieList[_wave-1]; i++)
+            for(i=0; i< (_zombieList[_wave-1] * _difficulty); i++)
             {
                 _spawnerChoice = Random.Range(0,3);
                 if (_spawnerChoice == 0 || _spawnerChoice == 1)
@@ -134,7 +138,7 @@ public class Spawner : MonoBehaviour
                     + Random.Range(18,-18), _spawnerList[_spawnerChoice].transform.position.y , transform.position.z), transform.rotation);
                 }
             }
-            for(i=0; i<= _batList[_wave-1]; i++)
+            for(i=0; i< (_batList[_wave-1] * _difficulty); i++)
             {
                 _spawnerChoice = Random.Range(0,3);
                 if (_spawnerChoice == 0 || _spawnerChoice == 1)

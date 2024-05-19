@@ -26955,6 +26955,7 @@ GameObject:
   - component: {fileID: 757397144}
   - component: {fileID: 757397146}
   - component: {fileID: 757397147}
+  - component: {fileID: 757397148}
   m_Layer: 0
   m_Name: Logic_manager
   m_TagString: Untagged
@@ -27034,6 +27035,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 295537626}
+--- !u!114 &757397148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757397143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c389c1d7afe247b4891b9f0190bdf251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "_Difficult\xE9": 1
 --- !u!4 &915619691
 Transform:
   m_ObjectHideFlags: 0
@@ -109688,6 +109702,7 @@ MonoBehaviour:
   _meshZone: {fileID: 1793474798}
   _cameraCanvas: {fileID: 2101312800}
   _timeBetweenEachWaves: 30
+  _logicManager: {fileID: 757397143}
   _zombie1: 3
   _bat1: 4
   _zombie2: 4
@@ -114731,7 +114746,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 32767
   m_TargetDisplay: 0
 --- !u!224 &2101312801
 RectTransform:

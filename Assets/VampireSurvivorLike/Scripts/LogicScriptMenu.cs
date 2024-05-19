@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LogicScriptMenu : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int _Difficulté = 1;
+    public static int _Difficulté;
 
     public void easy()
     {
