@@ -1,7 +1,6 @@
 using UnityEngine.SceneManagement;
 using Unity.Mathematics;
 using Unity.VisualScripting;
-using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.UI;
 public class MainCharacter : MonoBehaviour
