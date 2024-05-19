@@ -142,13 +142,13 @@ private void Start(){
             {
                 if(pointListOut.Count-1 == 4){
                     pointListOut.RemoveAt(pointListOut.Count-1);
-                    if(VerificationCarre(pointListOut)){
+                    if(VerificationCarre(pointListOut) && Spawner._wave-1>= 5){
                         Debug.Log("IS square");
                         Instantiate(Carre,playerTransform.position,playerTransform.rotation);
                         ZombieKillZone.SetActive(true);
                     }
                 }
-                else if(pointListOut.Count-1 == 3){
+                else if(pointListOut.Count-1 == 3 && Spawner._wave-1>= 3){
                     Debug.Log("Is triangle");
                     Instantiate(lightning,playerTransform.position,playerTransform.rotation);
                     BatKillZone.SetActive(true);
@@ -161,7 +161,8 @@ private void Start(){
 
             }
             
-            if(pointListOut.Count == 2){
+            if(pointListOut.Count == 2 && Spawner._wave-1>= 2){
+                Debug.Log(Spawner._wave);
                 Debug.Log("Is Line");
                 _gun.GetComponent<GunPivotScript>()._shootBoost = true;
             }

@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
     private List<int> _batList = new List<int>();
     private List<GameObject> _spawnerList = new List<GameObject>();
     private int _spawnerChoice;
-    private int _wave;
+    public static int _wave;
     private float _difficulty;
     public GameObject _logicManager;
     public GameObject _lineTuto;

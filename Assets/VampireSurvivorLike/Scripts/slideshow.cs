@@ -52,6 +52,7 @@ public class slideshow1 : MonoBehaviour
                     MainMenu.SetActive(true);
                     Cursor.visible= true;
                     Screen.lockCursor = false;
+                    currentImage = 0;
             }
             
             

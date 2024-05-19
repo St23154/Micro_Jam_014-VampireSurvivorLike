@@ -4,7 +4,6 @@ using Unity.VisualScripting;
 using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class MainCharacter : MonoBehaviour
 {
     public float _speed = 2f;
@@ -219,7 +218,7 @@ public class MainCharacter : MonoBehaviour
     private void GameOver()
     {
         AudioManager.instance.Play("GameOver");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadSceneAsync(0);
     }
 
 }
