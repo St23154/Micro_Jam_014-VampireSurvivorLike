@@ -3,6 +3,7 @@ using UnityEngine;
 public class CursorBehaviour : MonoBehaviour
 {
     private TrailRenderer tr;
+    [SerializeField] LogicScript script1;
 
     void Start()
     {
@@ -15,7 +16,7 @@ public class CursorBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && script1._cooldown==false)
         {
             // Clear the trail
             

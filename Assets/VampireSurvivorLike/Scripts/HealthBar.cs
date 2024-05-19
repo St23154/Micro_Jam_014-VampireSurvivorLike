@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public float _max_time = 1;
-    private float _elapsedTime = 0;
+    public float _elapsedTime = 0;
     [SerializeField] private Image _HealthBarFill;
 
     // Update is called once per frame

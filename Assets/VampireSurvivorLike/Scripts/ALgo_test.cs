@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 using Point = UnityEngine.Vector2;
+using Unity.VisualScripting;
 
 
 public class LineSimplification : MonoBehaviour
@@ -18,6 +19,7 @@ public class LineSimplification : MonoBehaviour
     public GameObject lightning;
     public GameObject Carre;
     public Transform playerTransform;
+    
     private static double PerpendicularDistance(Point pt, Point lineStart, Point lineEnd)
     {
         double dx = lineEnd.x - lineStart.x;
@@ -98,13 +100,15 @@ public class LineSimplification : MonoBehaviour
         }
     }
 
-
+private void Start(){
+    
+}
 
     void Update()
     {
         
-        
         if (Input.GetMouseButton(1))
+        
         
         {
         //transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -125,11 +129,6 @@ public class LineSimplification : MonoBehaviour
 
             Debug.Log("Points remaining after simplification:");
 
-            foreach (var p in pointListOut)
-            {
-                Debug.Log(p);
-            }
-            Debug.Log("premer et dernier pts");
             _FirstPoint = pointListOut[0];
             _LastPoint = pointListOut[^1];
             if(Math.Abs(_FirstPoint.x-_LastPoint.x) < 0.5 && Math.Abs(_FirstPoint.y-_LastPoint.y) < 0.5)
