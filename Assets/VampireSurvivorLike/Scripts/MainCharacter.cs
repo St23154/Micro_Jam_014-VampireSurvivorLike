@@ -9,6 +9,7 @@ public class MainCharacter : MonoBehaviour
 
     public float _speed = 2f;
     public float xp = 0;
+    public GameObject _meshZone;
     public GameObject _arrows;
     private Vector3 _target;
     private GameObject _arrowsToDelete;
@@ -21,6 +22,8 @@ public class MainCharacter : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _meshZone.SetActive(true);
+
     }
     // Update is called once per frame
     void Update()

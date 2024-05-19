@@ -9,20 +9,16 @@ public class GunPivotScript : MonoBehaviour
     private float _timePassed = 0f;
     [SerializeField] private Transform _turretRotationPoint;
     public GameObject _bullet;
+    public GameObject _shootPoint;
     private Transform _target;
     public LayerMask _ennemyMask;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()
     {
         if (_target == null)
         {
-            Debug.Log("not find");
             FindTarget();
             return;
         }
@@ -31,7 +27,7 @@ public class GunPivotScript : MonoBehaviour
 
         if(_timePassed > 1/_bulletPerSecond)
         {
-            Instantiate(_bullet, transform.position, _turretRotationPoint.transform.rotation);
+            Instantiate(_bullet, _shootPoint.transform.position, _turretRotationPoint.transform.rotation);
             _timePassed = 0f;
         }
 

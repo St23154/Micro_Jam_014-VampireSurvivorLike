@@ -21,6 +21,7 @@ public class Ennemy_ZombieAI : MonoBehaviour
 
     private void Awake()
     {
+        _player = GameObject.FindWithTag("Player").transform;
         _animator = GetComponent<Animator>();
     }
 
