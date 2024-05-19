@@ -126,7 +126,7 @@ MonoBehaviour:
   _player: {fileID: 0}
   _tourne: {x: 0, y: 180, z: 0}
   _tourne1: {x: 0, y: 0, z: 0}
-  _health: 100
+  _health: 160
 --- !u!95 &6457693343310659373
 Animator:
   serializedVersion: 5
