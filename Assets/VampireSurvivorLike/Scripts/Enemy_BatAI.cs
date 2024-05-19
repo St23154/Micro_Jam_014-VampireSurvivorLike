@@ -8,15 +8,11 @@ using UnityEngine.UIElements;
 public class Enemy_BatAI : MonoBehaviour
 {
 
-    public Transform _player;
+   public Transform _player;
     public Vector3 _tourne;
+    public Vector3 _tourne1;
     NavMeshAgent _agent;
-    private Animator _animator;
-
-    private void Awake()
-    {
-        _animator = GetComponent<Animator>();
-    }
+    public float _health = 40;
 
     // Start is called before the first frame update
     void Start()
@@ -29,22 +25,41 @@ public class Enemy_BatAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _animator.SetBool("IsWalking", true);
-        if(_player.position.x - transform.position.x < 0)
+        if(transform.eulerAngles != _tourne && transform.eulerAngles != _tourne1)
         {
-            if(transform.rotation.y == 180)
+            if(transform.eulerAngles.y - _tourne.y < transform.eulerAngles.y - _tourne1.y)
+            {
+                transform.eulerAngles = _tourne;
+            }
+            else
+            {
+                transform.eulerAngles = _tourne1;
+            }
+        }
+        if(transform.position.x  - _player.position.x < 0)
+        {
+            if(transform.eulerAngles == _tourne)
             {
             transform.Rotate(_tourne);
             }
         }
         else
         {
-            if(transform.rotation.y != 180)
+            if(transform.eulerAngles != _tourne)
             {
             transform.Rotate(_tourne);
             }
         }
         _agent.SetDestination(_player.position);
+    }
+
+    public void TakeDamage(float _amount)
+    {
+        _health -= _amount;
+        if (_health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
 }
