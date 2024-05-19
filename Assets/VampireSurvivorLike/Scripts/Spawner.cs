@@ -139,12 +139,12 @@ public class Spawner : MonoBehaviour
                 _lineTuto.SetActive(true);
                 _pauseManager.Pause();
             }
-            if (_wave == 4)
+            if (_wave == 3)
             {
                 _triangleTuto.SetActive(true);
                 _pauseManager.Pause();
             }
-            if (_wave == 6)
+            if (_wave == 5)
             {
                 _squareTuto.SetActive(true);
                 _pauseManager.Pause();
