@@ -45,6 +45,7 @@ public class LogicScript : MonoBehaviour
          }
          else{
             if(_ralentit == true){
+                _elapsedTime = 1;
                 Resume();
             }
             
