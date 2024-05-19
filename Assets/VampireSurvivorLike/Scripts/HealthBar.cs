@@ -28,7 +28,6 @@ public void TimeF(){
 
     public void UpdateHealthBar(){
         float targetFillAmount = 1 - _elapsedTime;
-        Debug.Log(_elapsedTime +" ze "+ targetFillAmount);
         _HealthBarFill.fillAmount = targetFillAmount;
     }
 }

@@ -1,14 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEditor.Timeline;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainCharacter : MonoBehaviour
 {
 
     public float _speed = 2f;
     public float xp = 0;
+    public float _health = 100;
     public GameObject _meshZone;
     public GameObject _arrows;
     private Vector3 _target;
@@ -17,13 +19,21 @@ public class MainCharacter : MonoBehaviour
     private Animator _animator;
     private bool _isMolletteButtonDown = false;
     private bool _stop = false;
+    private float _maxHealth;
+    private bool _canTakeDamage = true;
+    private float _time = 0;
+    public Image _HealthBarFill;
 
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _meshZone.SetActive(true);
+    }
 
+    void Start()
+    {
+        _maxHealth = _health;
     }
     // Update is called once per frame
     void Update()
@@ -64,6 +74,17 @@ public class MainCharacter : MonoBehaviour
             _arrowsToDelete = GameObject.FindGameObjectWithTag("ArrowPointer");
             _animator.SetBool("IsWalking", false);
             Destroy(_arrowsToDelete);
+        }
+
+        //Timer that allow player to take damage
+        if (_canTakeDamage == false)
+        {
+            _time += Time.deltaTime;
+            if (_time >= 1)
+            {
+                _canTakeDamage = true;
+                _time = 0;     
+            }
         }
     }
 
@@ -109,10 +130,67 @@ public class MainCharacter : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Coins _experience = other.GetComponent<Coins>();
+        Ennemy_ZombieAI ZOMBIE = other.GetComponent<Ennemy_ZombieAI>();
+        Enemy_BatAI BAT = other.GetComponent<Enemy_BatAI>();
+
         if(_experience != null)
         {
             _experience.Collect();
         }
+
+        if (ZOMBIE != null)
+        {
+            Debug.Log("aie");
+            HeroTakeDamage(-30);
+        }
+
+
+        if (BAT != null)
+        {
+            HeroTakeDamage(-20);
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        Ennemy_ZombieAI ZOMBIE = other.GetComponent<Ennemy_ZombieAI>();
+        Enemy_BatAI BAT = other.GetComponent<Enemy_BatAI>();
+
+        if (ZOMBIE != null)
+        {
+            Debug.Log("aie");
+            HeroTakeDamage(-30);
+        }
+
+
+        if (BAT != null)
+        {
+            HeroTakeDamage(-20);
+        }
+    }
+
+    public void HeroTakeDamage(int _amount)
+    {
+        if (_canTakeDamage)
+        {
+            _health += _amount;
+            if (_health <= 0)
+            {
+                GameOver();
+            }
+            UpdateHealthBar();
+            _canTakeDamage = false;
+        }
+    }
+
+    private void UpdateHealthBar(){
+        float targetFillAmount = _health / _maxHealth;
+        _HealthBarFill.fillAmount = targetFillAmount;
+    }
+
+    private void GameOver()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

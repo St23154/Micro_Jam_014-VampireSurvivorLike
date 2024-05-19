@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 8
-  _damageAmount: 20
+  _damageAmount: 10
   _timeUntilDestroying: 30
   _greenParticles: {fileID: 0}

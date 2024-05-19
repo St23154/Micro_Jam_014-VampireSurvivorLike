@@ -31,6 +31,7 @@ public class Ennemy_ZombieAI : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
+        _agent.avoidancePriority = UnityEngine.Random.Range(0, 100);
     }
 
     // Update is called once per frame
