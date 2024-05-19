@@ -10,7 +10,7 @@ public class LogicScript : MonoBehaviour
     public float _max_time = 1;
     public float _elapsedTime = 0;
     private bool _ralentit = false;
-
+    public float _slowness = 1;
     public bool _cooldown = false;
     [SerializeField] private Image _HealthBarFill;
     [SerializeField] private GameObject StopTime;
@@ -58,7 +58,7 @@ public class LogicScript : MonoBehaviour
 
 public void TimeF()
 {
-     _elapsedTime += Time.deltaTime;     
+     _elapsedTime += Time.deltaTime/_slowness;     
     UpdateHealthBar(); 
           
 }
