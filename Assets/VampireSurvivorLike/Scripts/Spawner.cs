@@ -25,6 +25,10 @@ public class Spawner : MonoBehaviour
     private int _wave;
     private float _difficulty;
     public GameObject _logicManager;
+    public GameObject _lineTuto;
+    public GameObject _triangleTuto;
+    public GameObject _squareTuto;
+    PauseMenuScript _pauseManager;
 
     [Header("Wave - 1")]
     [SerializeField]
@@ -88,6 +92,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
+        _pauseManager = GameObject.Find("Logic_manager").GetComponent<PauseMenuScript>();
         if (LogicScriptMenu._Difficulté != 0)
         {
             _difficulty = LogicScriptMenu._Difficulté;
@@ -129,7 +134,21 @@ public class Spawner : MonoBehaviour
         _time += Time.deltaTime;
         if (_time >= _timeBetweenEachWaves)
         {
-            Debug.Log(_difficulty + "dif");
+            if (_wave == 2)
+            {
+                _lineTuto.SetActive(true);
+                _pauseManager.Pause();
+            }
+            if (_wave == 4)
+            {
+                _triangleTuto.SetActive(true);
+                _pauseManager.Pause();
+            }
+            if (_wave == 6)
+            {
+                _squareTuto.SetActive(true);
+                _pauseManager.Pause();
+            }
             _waveUIText.text = "Wave " + _wave;
             Instantiate(_waveUIText, transform.position, transform.rotation, _cameraCanvas.transform);
             for(i=0; i< (_zombieList[_wave-1] * _difficulty ); i++)

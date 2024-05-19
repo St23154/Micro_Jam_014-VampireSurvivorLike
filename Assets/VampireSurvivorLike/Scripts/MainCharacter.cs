@@ -151,7 +151,27 @@ public class MainCharacter : MonoBehaviour
             {
                 _levelupScript.MoreLevel();
             }
-            if (xp == 750)
+            if (xp == 500)
+            {
+                _levelupScript.MoreLevel();
+            }
+            if (xp == 1000)
+            {
+                _levelupScript.MoreLevel();
+            }
+            if (xp == 2000)
+            {
+                _levelupScript.MoreLevel();
+            }
+            if (xp == 4000)
+            {
+                _levelupScript.MoreLevel();
+            }
+            if (xp == 8000)
+            {
+                _levelupScript.MoreLevel();
+            }
+            if (xp == 16000)
             {
                 _levelupScript.MoreLevel();
             }
