@@ -22,6 +22,18 @@ public class LevelUp : MonoBehaviour
     private string _choice1;
     private string _choice2;
     private string _choice3;
+    public GameObject _mainPlayer;
+    public GameObject _bullet;
+    public GameObject _gun;
+    public GameObject _logicManager;
+
+    [Header("Boost")]
+    public float _damageToAdd = 10;
+    public float _speedToAdd = 10;
+    public float _bulletPerSecondToAdd = 3;
+    public float _healthToAdd = 30;
+    public float _slownessToAdd = 3;
+    
 
     private void Awake()
     {
@@ -53,61 +65,76 @@ public class LevelUp : MonoBehaviour
 
     public void Choix1()
     {
-        if (ch1 == "damage")
+        if (ch1 == "Damage")
         {
-
+            _bullet.GetComponent<Bullet>()._damageAmount += _damageToAdd;
         }
-        else if (ch1 == "speed")
+        else if (ch1 == "Speed")
         {
-
+            _mainPlayer.GetComponent<MainCharacter>()._speed += _speedToAdd;
         }
-        else if (ch1 == "rotation")
+        else if (ch1 == "RateOfFire")
         {
-
+            _gun.GetComponent<GunPivotScript>()._bulletPerSecond += _bulletPerSecondToAdd;
         }
-        else if (ch1 == "tirfois3")
+        else if (ch1 == "Life")
         {
-
+            _mainPlayer.GetComponent<MainCharacter>()._health += _healthToAdd;
+            _mainPlayer.GetComponent<MainCharacter>().UpdateHealthBar();
+        }
+        else if (ch1 == "TimeToDraw")
+        {
+            _logicManager.GetComponent<LogicScript>()._slowness += _slownessToAdd;
         }
     }
 
     public void Choix2()
     {
-        if (ch2 == "damage")
+        if (ch1 == "Damage")
         {
-
+            _bullet.GetComponent<Bullet>()._damageAmount += _damageToAdd;
         }
-        else if (ch2 == "speed")
+        else if (ch1 == "Speed")
         {
- 
+            _mainPlayer.GetComponent<MainCharacter>()._speed += _speedToAdd;
         }
-        else if (ch2 == "rotation")
+        else if (ch1 == "RateOfFire")
         {
-
+            _gun.GetComponent<GunPivotScript>()._bulletPerSecond += _bulletPerSecondToAdd;
         }
-        else if (ch2 == "tirfois3")
+        else if (ch1 == "Life")
         {
-
+            _mainPlayer.GetComponent<MainCharacter>()._health += _healthToAdd;
+            _mainPlayer.GetComponent<MainCharacter>().UpdateHealthBar();
+        }
+        else if (ch1 == "TimeToDraw")
+        {
+            _logicManager.GetComponent<LogicScript>()._slowness += _slownessToAdd;
         }
     }
 
     public void Choix3()
     {
-        if (ch3 == "damage")
+        if (ch1 == "Damage")
         {
-
+            _bullet.GetComponent<Bullet>()._damageAmount += _damageToAdd;
         }
-        else if (ch3 == "speed")
+        else if (ch1 == "Speed")
         {
-
+            _mainPlayer.GetComponent<MainCharacter>()._speed += _speedToAdd;
         }
-        else if (ch3 == "rotation")
+        else if (ch1 == "RateOfFire")
         {
- 
+            _gun.GetComponent<GunPivotScript>()._bulletPerSecond += _bulletPerSecondToAdd;
         }
-        else if (ch3 == "tirfois3")
+        else if (ch1 == "Life")
         {
-
+            _mainPlayer.GetComponent<MainCharacter>()._health += _healthToAdd;
+            _mainPlayer.GetComponent<MainCharacter>().UpdateHealthBar();
+        }
+        else if (ch1 == "TimeToDraw")
+        {
+            _logicManager.GetComponent<LogicScript>()._slowness += _slownessToAdd;
         }
     }
 
