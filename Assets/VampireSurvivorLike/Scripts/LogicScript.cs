@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 public class LogicScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public float _max_time = 1;
     public float _elapsedTime = 0;
+
+    public bool _cooldown = false;
     [SerializeField] private Image _HealthBarFill;
     [SerializeField] private GameObject StopTime;
 
@@ -27,14 +30,21 @@ public class LogicScript : MonoBehaviour
     }
     void Update()
     {
-         if (Input.GetMouseButton(1) && _elapsedTime<1){
+         if (Input.GetMouseButton(1) && _elapsedTime<1 && _cooldown == false){
             Slow();
             TimeF();
 
          }
          else{
             Resume();
-            _elapsedTime = 0;
+            if(_elapsedTime > 0){
+            _cooldown = true;
+            _elapsedTime -= Time.deltaTime/5;
+            UpdateHealthBar();
+            }
+            else{
+                _cooldown = false;
+            }
          }
 
         
