@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -8,6 +9,19 @@ public class Spawner : MonoBehaviour
     public GameObject _spawner2;
     public GameObject _spawner3;
     public GameObject _spawner4;
+    public GameObject _zombie;
+    public GameObject _bat;
+    public TextMeshProUGUI _waveUIText;
+    public GameObject _meshZone;
+    public Canvas _cameraCanvas;
+    public float _timeBetweenEachWaves;
+    private float _time = 25;
+    private float i = 0;
+    private List<int> _zombieList = new List<int>();
+    private List<int> _batList = new List<int>();
+    private List<GameObject> _spawnerList = new List<GameObject>();
+    private int _spawnerChoice;
+    private int _wave;
 
     [Header("Wave - 1")]
     [SerializeField]
@@ -71,12 +85,71 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        
+        _wave = 1;
+        _zombieList.Add(_zombie1);
+        _zombieList.Add(_zombie2);
+        _zombieList.Add(_zombie3);
+        _zombieList.Add(_zombie4);
+        _zombieList.Add(_zombie5);
+        _zombieList.Add(_zombie6);
+        _zombieList.Add(_zombie7);
+        _zombieList.Add(_zombie8);
+        _zombieList.Add(_zombie9);
+        _zombieList.Add(_zombie10);
+        _batList.Add(_bat1);
+        _batList.Add(_bat2);
+        _batList.Add(_bat3);
+        _batList.Add(_bat4);
+        _batList.Add(_bat5);
+        _batList.Add(_bat6);
+        _batList.Add(_bat7);
+        _batList.Add(_bat8);
+        _batList.Add(_bat9);
+        _batList.Add(_bat10);
+        _spawnerList.Add(_spawner1);
+        _spawnerList.Add(_spawner2);
+        _spawnerList.Add(_spawner3);
+        _spawnerList.Add(_spawner4);
+        _meshZone.SetActive(true);
     }
-
     // Update is called once per frame
     void Update()
     {
-        
+        _time += Time.deltaTime;
+        if (_time >= _timeBetweenEachWaves)
+        {
+            _waveUIText.text = "Wave " + _wave;
+            Instantiate(_waveUIText, transform.position, transform.rotation, _cameraCanvas.transform);
+            for(i=0; i<= _zombieList[_wave-1]; i++)
+            {
+                _spawnerChoice = Random.Range(0,3);
+                if (_spawnerChoice == 0 || _spawnerChoice == 1)
+                {
+                    Instantiate(_zombie, new Vector3(_spawnerList[_spawnerChoice].transform.position.x, 
+                    _spawnerList[_spawnerChoice].transform.position.y + Random.Range(10,-10), transform.position.z), transform.rotation);
+                }
+                else
+                {
+                    Instantiate(_zombie, new Vector3(_spawnerList[_spawnerChoice].transform.position.x 
+                    + Random.Range(18,-18), _spawnerList[_spawnerChoice].transform.position.y , transform.position.z), transform.rotation);
+                }
+            }
+            for(i=0; i<= _batList[_wave-1]; i++)
+            {
+                _spawnerChoice = Random.Range(0,3);
+                if (_spawnerChoice == 0 || _spawnerChoice == 1)
+                {
+                    Instantiate(_bat, new Vector3(_spawnerList[_spawnerChoice].transform.position.x, 
+                    _spawnerList[_spawnerChoice].transform.position.y + Random.Range(10,-10), transform.position.z), transform.rotation);
+                }
+                else
+                {
+                    Instantiate(_bat, new Vector3(_spawnerList[_spawnerChoice].transform.position.x 
+                    + Random.Range(18,-18), _spawnerList[_spawnerChoice].transform.position.y , transform.position.z), transform.rotation);
+                }
+            }
+            _time = 0;  
+            _wave += 1; 
+        }
     }
 }

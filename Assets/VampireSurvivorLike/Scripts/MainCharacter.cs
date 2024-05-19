@@ -11,12 +11,12 @@ public class MainCharacter : MonoBehaviour
     public float _speed = 2f;
     public float xp = 0;
     public float _health = 100;
-    public GameObject _meshZone;
     public GameObject _arrows;
     private Vector3 _target;
     private GameObject _arrowsToDelete;
     public Camera _mainCamera;
     private Animator _animator;
+    private LevelUp _levelupScript;
     private bool _isMolletteButtonDown = false;
     private bool _stop = false;
     private float _maxHealth;
@@ -28,7 +28,7 @@ public class MainCharacter : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _meshZone.SetActive(true);
+        _levelupScript = GameObject.Find("Logic_manager").GetComponent<LevelUp>();
     }
 
     void Start()
@@ -64,7 +64,7 @@ public class MainCharacter : MonoBehaviour
         }
 
         //Move
-
+    
         transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
 
         //Destroy arrows if player is on
@@ -136,11 +136,15 @@ public class MainCharacter : MonoBehaviour
         if(_experience != null)
         {
             _experience.Collect();
+            xp += 10;
+            if (xp == 50)
+            {
+                _levelupScript.MoreLevel();
+            }
         }
 
         if (ZOMBIE != null)
         {
-            Debug.Log("aie");
             HeroTakeDamage(-30);
         }
 
@@ -158,7 +162,6 @@ public class MainCharacter : MonoBehaviour
 
         if (ZOMBIE != null)
         {
-            Debug.Log("aie");
             HeroTakeDamage(-30);
         }
 
