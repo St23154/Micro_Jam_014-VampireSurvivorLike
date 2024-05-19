@@ -179,7 +179,8 @@ public class Spawner : MonoBehaviour
                     + UnityEngine.Random.Range(18,-18), _spawnerList[_spawnerChoice].transform.position.y , transform.position.z), transform.rotation);
                 }
             }
-            _time = 0;  
+            _time = 0; 
+            _timeBetweenEachWaves += 5; 
             _wave += 1; 
         }
     }
