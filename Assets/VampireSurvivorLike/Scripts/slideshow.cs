@@ -9,7 +9,7 @@ public class slideshow1 : MonoBehaviour
     [SerializeField] GameObject MainMenu;
     
     public Texture[] imageArray; 
-    private int currentImage;
+    public static int currentImage;
             
     void OnGUI()
     {
@@ -52,7 +52,7 @@ public class slideshow1 : MonoBehaviour
                     MainMenu.SetActive(true);
                     Cursor.visible= true;
                     Screen.lockCursor = false;
-                    currentImage = 0;
+                    
             }
             
             

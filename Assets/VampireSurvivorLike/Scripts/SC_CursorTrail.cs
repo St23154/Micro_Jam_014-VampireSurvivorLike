@@ -16,7 +16,7 @@ public class CursorBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(1) && script1._cooldown==false)
+        if (Input.GetMouseButton(1) && LogicScript._cooldown==false)
         {
             // Clear the trail
             

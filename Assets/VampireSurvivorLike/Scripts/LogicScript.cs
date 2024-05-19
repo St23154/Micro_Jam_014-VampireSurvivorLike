@@ -11,7 +11,7 @@ public class LogicScript : MonoBehaviour
     public float _elapsedTime = 0;
     private bool _ralentit = false;
     public float _slowness = 1;
-    public bool _cooldown = false;
+    public static bool _cooldown = false;
     [SerializeField] private Image _HealthBarFill;
     [SerializeField] private GameObject StopTime;
 
