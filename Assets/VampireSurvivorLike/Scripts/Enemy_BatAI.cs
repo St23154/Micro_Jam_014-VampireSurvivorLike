@@ -17,6 +17,11 @@ public class Enemy_BatAI : MonoBehaviour
     private float i = 0f;
     private float piecesnumber = 0f;
 
+    private void Awake()
+    {
+        _player = GameObject.FindWithTag("Player").transform;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

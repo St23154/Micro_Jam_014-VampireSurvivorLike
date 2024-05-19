@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b35cf85b6addb4895e8f1e50cb3cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _coins: {fileID: 4242483461903938467, guid: 3b70a231760419b4594ca604b00a9f17, type: 3}
   _player: {fileID: 0}
   _tourne: {x: 0, y: 180, z: 0}
   _tourne1: {x: 0, y: 0, z: 0}
