@@ -8,6 +8,7 @@ public class MainCharacter : MonoBehaviour
 {
 
     public float _speed = 2f;
+    public float xp = 0;
     public GameObject _arrows;
     private Vector3 _target;
     private GameObject _arrowsToDelete;
@@ -100,6 +101,15 @@ public class MainCharacter : MonoBehaviour
                     }
                 }
             }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Coins _experience = other.GetComponent<Coins>();
+        if(_experience != null)
+        {
+            _experience.Collect();
+        }
     }
 
 }

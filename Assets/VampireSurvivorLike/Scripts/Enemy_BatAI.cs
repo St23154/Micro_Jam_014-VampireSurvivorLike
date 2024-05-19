@@ -8,11 +8,14 @@ using UnityEngine.UIElements;
 public class Enemy_BatAI : MonoBehaviour
 {
 
+    public GameObject _coins;
    public Transform _player;
     public Vector3 _tourne;
     public Vector3 _tourne1;
     NavMeshAgent _agent;
     public float _health = 40;
+    private float i = 0f;
+    private float piecesnumber = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +62,11 @@ public class Enemy_BatAI : MonoBehaviour
         if (_health <= 0)
         {
             Destroy(gameObject);
+            piecesnumber = UnityEngine.Random.Range(3,5);
+            for(i=0; i<= piecesnumber; i++)
+            {
+                Instantiate(_coins, new Vector3(transform.position.x + UnityEngine.Random.Range(0.1f,0.5f), transform.position.y + UnityEngine.Random.Range(0.1f,0.5f), transform.position.z), transform.rotation);
+            }
         }
     }
 

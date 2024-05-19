@@ -39,6 +39,10 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             //_cameraShakeScript.GetComponent<CameraShake>().ShakeCamera();
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
