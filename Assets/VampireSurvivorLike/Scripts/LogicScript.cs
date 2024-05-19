@@ -73,4 +73,9 @@ public void UpdateHealthBar()
         float targetFillAmount = 1 - _elapsedTime;
         _HealthBarFill.fillAmount = targetFillAmount;
     }
+
+public void ClickSound()
+{
+    AudioManager.instance.Play("Click");
+}
 }

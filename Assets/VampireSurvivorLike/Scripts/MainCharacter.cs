@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class MainCharacter : MonoBehaviour
 {
-
     public float _speed = 2f;
     public float xp = 0;
     public float _health = 100;
@@ -138,6 +137,7 @@ public class MainCharacter : MonoBehaviour
         if(_experience != null)
         {
             _experience.Collect();
+            AudioManager.instance.Play("Coin");
             xp += 10;
             if (xp == 50)
             {
@@ -156,7 +156,7 @@ public class MainCharacter : MonoBehaviour
                 _levelupScript.MoreLevel();
             }
         }
-        
+
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -178,10 +178,10 @@ public class MainCharacter : MonoBehaviour
 
     public void HeroTakeDamage(int _amount)
     {
-        Debug.Log("Hero Took Damage" + _amount);
         if (_canTakeDamage)
         {
             _health += _amount;
+            AudioManager.instance.Play("GetHit");
             if (_health <= 0)
             {
                 GameOver();
@@ -198,6 +198,7 @@ public class MainCharacter : MonoBehaviour
 
     private void GameOver()
     {
+        AudioManager.instance.Play("GameOver");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

@@ -18,6 +18,7 @@ public class LineSimplification : MonoBehaviour
     private List<Point> pointList = new List<Point>();
     public GameObject lightning;
     public GameObject Carre;
+    public GameObject _gun;
     public Transform playerTransform;
 
     [SerializeField] GameObject BatKillZone;
@@ -162,6 +163,7 @@ private void Start(){
             
             if(pointListOut.Count == 2){
                 Debug.Log("Is Line");
+                _gun.GetComponent<GunPivotScript>()._shootBoost = true;
             }
             
             pointList.Clear();

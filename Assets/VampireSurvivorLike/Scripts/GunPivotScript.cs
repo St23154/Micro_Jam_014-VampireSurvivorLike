@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class GunPivotScript : MonoBehaviour
 {
+    public bool _shootBoost = false;
     public float _turretRange = 13f;
     public float _bulletPerSecond = 2f;
     private float _timePassed = 0f;
+    private float _timePassed1 = 0f;
+    private float _time = 2;
     [SerializeField] private Transform _turretRotationPoint;
     public GameObject _bullet;
     public GameObject _shootPoint;
     private Transform _target;
     public LayerMask _ennemyMask;
+    private float Boost = 1;
 
     void Start()
     {
@@ -20,16 +24,31 @@ public class GunPivotScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_shootBoost == true)
+        {
+            _time = 2;
+            _timePassed1 += Time.deltaTime;
+            Boost = 2;
+            if(_timePassed1 > _time)
+            {
+                _timePassed1 = 0;
+                Boost = 1;
+                _shootBoost = false;
+            }
+        }
+
         if (_target == null)
         {
             FindTarget();
             return;
         }
+
         RotateTowardsTarget();
         _timePassed += Time.deltaTime;
 
-        if(_timePassed > 1/_bulletPerSecond)
+        if(_timePassed > 1/(_bulletPerSecond * Boost))
         {
+            AudioManager.instance.Play("Shoot");
             Instantiate(_bullet, _shootPoint.transform.position, _turretRotationPoint.transform.rotation);
             _timePassed = 0f;
         }
