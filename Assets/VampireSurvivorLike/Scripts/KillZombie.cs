@@ -7,7 +7,7 @@ public class KillZombie : MonoBehaviour
     [SerializeField] GameObject ZombieKillZone;
     
     // Start is called before the first frame update
- private void OnTriggerEnter2D(Collider2D Collision)
+    private void OnTriggerEnter2D(Collider2D Collision)
     {
     Ennemy_ZombieAI ZOMBIE = Collision.GetComponent<Ennemy_ZombieAI>();
         
@@ -18,6 +18,5 @@ public class KillZombie : MonoBehaviour
         }
 
         ZombieKillZone.SetActive(false);
-        Debug.Log("plus de Zombie");
     }
 }

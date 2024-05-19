@@ -18,6 +18,5 @@ public class KillBat : MonoBehaviour
         }
 
         BatKillZone.SetActive(false);
-        Debug.Log("plus de bat");
     }
 }

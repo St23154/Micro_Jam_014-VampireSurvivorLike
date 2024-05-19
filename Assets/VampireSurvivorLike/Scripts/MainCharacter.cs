@@ -156,17 +156,7 @@ public class MainCharacter : MonoBehaviour
                 _levelupScript.MoreLevel();
             }
         }
-
-        if (ZOMBIE != null)
-        {
-            HeroTakeDamage(-30);
-        }
-
-
-        if (BAT != null)
-        {
-            HeroTakeDamage(-20);
-        }
+        
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -188,6 +178,7 @@ public class MainCharacter : MonoBehaviour
 
     public void HeroTakeDamage(int _amount)
     {
+        Debug.Log("Hero Took Damage" + _amount);
         if (_canTakeDamage)
         {
             _health += _amount;
