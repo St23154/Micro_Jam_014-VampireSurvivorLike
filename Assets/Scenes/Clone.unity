@@ -748,6 +748,7 @@ MonoBehaviour:
   lightning: {fileID: 0}
   Carre: {fileID: 0}
   playerTransform: {fileID: 0}
+  BatKillZone: {fileID: 0}
 --- !u!4 &345788260
 Transform:
   m_ObjectHideFlags: 0
@@ -6021,6 +6022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _max_time: 1
   _elapsedTime: 0
+  _slowness: 1
   _cooldown: 0
   _HealthBarFill: {fileID: 227614469}
   StopTime: {fileID: 391591565}
