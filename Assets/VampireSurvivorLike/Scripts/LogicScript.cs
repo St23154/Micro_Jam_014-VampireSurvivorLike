@@ -9,6 +9,7 @@ public class LogicScript : MonoBehaviour
     // Start is called before the first frame update
     public float _max_time = 1;
     public float _elapsedTime = 0;
+    private bool _ralentit = false;
 
     public bool _cooldown = false;
     [SerializeField] private Image _HealthBarFill;
@@ -20,6 +21,7 @@ public class LogicScript : MonoBehaviour
     {
         StopTime.SetActive(true);
         Time.timeScale = 0.2f;
+        _ralentit = true;
     }
 
     // Method to resume time and deactivate StopTime
@@ -27,6 +29,7 @@ public class LogicScript : MonoBehaviour
     {
         StopTime.SetActive(false);
         Time.timeScale = 1f;
+        _ralentit = false;
     }
     void Update()
     {
@@ -36,7 +39,10 @@ public class LogicScript : MonoBehaviour
 
          }
          else{
-            Resume();
+            if(_ralentit == true){
+                Resume();
+            }
+            
             if(_elapsedTime > 0){
             _cooldown = true;
             _elapsedTime -= Time.deltaTime/5;

@@ -9,7 +9,9 @@ public class PauseMenuScript : MonoBehaviour
     public void Pause()
     {
         pauseMenu.SetActive(true);
+        Debug.Log(Time.timeScale);
         Time.timeScale=0;
+        Debug.Log(Time.timeScale);
     }
     public void Resume()
     {
