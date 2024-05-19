@@ -21,6 +21,7 @@ public class LineSimplification : MonoBehaviour
     public Transform playerTransform;
 
     [SerializeField] GameObject BatKillZone;
+    [SerializeField] GameObject ZombieKillZone;
     // Start is called before the first frame update
  
         
@@ -143,6 +144,7 @@ private void Start(){
                     if(VerificationCarre(pointListOut)){
                         Debug.Log("IS square");
                         Instantiate(Carre,playerTransform.position,playerTransform.rotation);
+                        ZombieKillZone.SetActive(true);
                     }
                 }
                 else if(pointListOut.Count-1 == 3){
