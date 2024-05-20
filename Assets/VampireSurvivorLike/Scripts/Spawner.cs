@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
     public TextMeshProUGUI _waveUIText;
     public GameObject _meshZone;
     public Canvas _cameraCanvas;
-    public float _timeBetweenEachWaves;
+    public int _timeBetweenEachWaves;
     private float _time = 25;
     private float i = 0;
     private List<int> _zombieList = new List<int>();
@@ -29,6 +29,7 @@ public class Spawner : MonoBehaviour
     public GameObject _triangleTuto;
     public GameObject _squareTuto;
     PauseMenuScript _pauseManager;
+    private int _timeToAdd;
 
     [Header("Wave - 1")]
     [SerializeField]
@@ -132,6 +133,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         _time += Time.deltaTime;
+        Debug.Log(_time + " : " + _timeBetweenEachWaves);
         if (_time >= _timeBetweenEachWaves)
         {
             if (_wave == 2)
@@ -180,7 +182,7 @@ public class Spawner : MonoBehaviour
                 }
             }
             _time = 0; 
-            _timeBetweenEachWaves += 5; 
+            _timeBetweenEachWaves += 1; ;
             _wave += 1; 
         }
     }

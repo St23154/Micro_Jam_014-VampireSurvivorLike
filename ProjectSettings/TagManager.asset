@@ -7,6 +7,7 @@ TagManager:
   - ArrowPointer
   - Bat
   - ennemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

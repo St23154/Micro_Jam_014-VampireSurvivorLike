@@ -7,7 +7,7 @@ public class KillBat : MonoBehaviour
     [SerializeField] GameObject BatKillZone;
     
     // Start is called before the first frame update
- private void OnTriggerEnter2D(Collider2D Collision)
+    private void OnTriggerEnter2D(Collider2D Collision)
     {
     Enemy_BatAI BAT = Collision.GetComponent<Enemy_BatAI>();
         

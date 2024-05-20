@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public float _speed = 40;
-    public float _damageAmount = 20;
+    private float _damageAmount = 20;
     public float _timeUntilDestroying;
     private float _time = 0.0f;
     private Rigidbody2D _myRigidBody;
@@ -13,10 +14,10 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _damageAmount = 20;
         _myRigidBody = GetComponent<Rigidbody2D>();
         _myRigidBody.velocity = transform.right*_speed;
     }
+
 
     private void OnTriggerEnter2D(Collider2D Collision)
     {
@@ -25,6 +26,7 @@ public class Bullet : MonoBehaviour
         
         if (ZOMBIE != null)
         {
+            Debug.Log(_damageAmount);
             ZOMBIE.TakeDamage(_damageAmount);
             Destroy(gameObject);
             //_cameraShakeScript.GetComponent<CameraShake>().ShakeCamera();
@@ -33,6 +35,7 @@ public class Bullet : MonoBehaviour
 
         if (BAT != null)
         {
+            Debug.Log(_damageAmount);
             BAT.TakeDamage(_damageAmount);
             Destroy(gameObject);
             //_cameraShakeScript.GetComponent<CameraShake>().ShakeCamera();
@@ -46,6 +49,11 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);     
         }
+    }
+
+    public void AddDamage(float _amount)
+    {
+        _damageAmount = _damageAmount + _amount;
     }
 
 }

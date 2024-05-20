@@ -38,11 +38,11 @@ public class MainCharacter : MonoBehaviour
     void Update()
     {
         //Click Detection
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(0))
         {
             _isMolletteButtonDown = true;
         }
-        if (Input.GetMouseButtonUp(2))
+        if (Input.GetMouseButtonUp(0))
         {
             _isMolletteButtonDown = false;
         }

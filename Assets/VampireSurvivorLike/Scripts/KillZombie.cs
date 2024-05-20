@@ -13,7 +13,7 @@ public class KillZombie : MonoBehaviour
         
         if (ZOMBIE != null)
         {
-            ZOMBIE.TakeDamage(100);
+            ZOMBIE.TakeDamage(200);
             //_cameraShakeScript.GetComponent<CameraShake>().ShakeCamera();
         }
 

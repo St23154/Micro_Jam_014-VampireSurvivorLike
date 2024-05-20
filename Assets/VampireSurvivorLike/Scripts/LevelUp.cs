@@ -28,7 +28,7 @@ public class LevelUp : MonoBehaviour
     public GameObject _logicManager;
 
     [Header("Boost")]
-    public float _damageToAdd = 10;
+    public float _damageToAdd = 100;
     public float _speedToAdd = 10;
     public float _bulletPerSecondToAdd = 3;
     public float _healthToAdd = 30;
@@ -42,7 +42,7 @@ public class LevelUp : MonoBehaviour
 
     void Start()
     {
-        _effectsList = new List<string>{"Damage", "Speed", "RateOfFire", "Life", "TimeToDraw"};
+        _effectsList = new List<string>{"Speed", "RateOfFire", "Life", "TimeToDraw"};
     }
 
     public void CloseLevelUp()
@@ -53,61 +53,70 @@ public class LevelUp : MonoBehaviour
     
     public void OpenLevelUp(string choice1, string choice2, string choice3)
     {
-        _pauseManager.Pause();
-        panel.SetActive(true);
         text1.text = choice1;
         text2.text = choice2;
         text3.text = choice3;
         ch1 = choice1;
         ch2 = choice2;
         ch3 = choice3;
+        _pauseManager.Pause();
+        panel.SetActive(true);
     }
 
     public void Choix1()
     {
-        if (ch1 == "Damage")
+        Debug.Log("choix1 : " + ch1);
+        if (ch1 == "Speed")
         {
-            _bullet.GetComponent<Bullet>()._damageAmount += _damageToAdd;
-        }
-        else if (ch1 == "Speed")
-        {
+            Debug.Log("Speed actual : " + _mainPlayer.GetComponent<MainCharacter>()._speed);
             _mainPlayer.GetComponent<MainCharacter>()._speed += _speedToAdd;
+            Debug.Log("Now : " + _mainPlayer.GetComponent<MainCharacter>()._speed);
         }
         else if (ch1 == "RateOfFire")
         {
+            Debug.Log("Rate : " + _gun.GetComponent<GunPivotScript>()._bulletPerSecond);
             _gun.GetComponent<GunPivotScript>()._bulletPerSecond += _bulletPerSecondToAdd;
+            Debug.Log("Now : " + _gun.GetComponent<GunPivotScript>()._bulletPerSecond);
         }
         else if (ch1 == "Life")
         {
+            Debug.Log("Life");
             _mainPlayer.GetComponent<MainCharacter>()._health += _healthToAdd;
             _mainPlayer.GetComponent<MainCharacter>().UpdateHealthBar();
+            Debug.Log("good");
         }
         else if (ch1 == "TimeToDraw")
         {
+            Debug.Log("TmDr");
             _logicManager.GetComponent<LogicScript>()._slowness += _slownessToAdd;
+            Debug.Log("good");
+        }
+        else
+        {
+            Debug.Log("rien");
         }
     }
 
     public void Choix2()
     {
-        if (ch1 == "Damage")
+        if (ch2 == "Speed")
         {
-            _bullet.GetComponent<Bullet>()._damageAmount += _damageToAdd;
-        }
-        else if (ch1 == "Speed")
-        {
+            Debug.Log("Speed actual : " + _mainPlayer.GetComponent<MainCharacter>()._speed);
             _mainPlayer.GetComponent<MainCharacter>()._speed += _speedToAdd;
+            Debug.Log("Now : " + _mainPlayer.GetComponent<MainCharacter>()._speed);
         }
-        else if (ch1 == "RateOfFire")
+        else if (ch2 == "RateOfFire")
         {
+            Debug.Log("Rate : " + _gun.GetComponent<GunPivotScript>()._bulletPerSecond);
             _gun.GetComponent<GunPivotScript>()._bulletPerSecond += _bulletPerSecondToAdd;
+            Debug.Log("Now : " + _gun.GetComponent<GunPivotScript>()._bulletPerSecond);
         }
-        else if (ch1 == "Life")
+        else if (ch2 == "Life")
         {
             _mainPlayer.GetComponent<MainCharacter>()._health += _healthToAdd;
             _mainPlayer.GetComponent<MainCharacter>().UpdateHealthBar();
         }
-        else if (ch1 == "TimeToDraw")
+        else if (ch2 == "TimeToDraw")
         {
             _logicManager.GetComponent<LogicScript>()._slowness += _slownessToAdd;
         }
@@ -115,24 +124,24 @@ public class LevelUp : MonoBehaviour
 
     public void Choix3()
     {
-        if (ch1 == "Damage")
+        if (ch3 == "Speed")
         {
-            _bullet.GetComponent<Bullet>()._damageAmount += _damageToAdd;
-        }
-        else if (ch1 == "Speed")
-        {
+            Debug.Log("Speed actual : " + _mainPlayer.GetComponent<MainCharacter>()._speed);
             _mainPlayer.GetComponent<MainCharacter>()._speed += _speedToAdd;
+            Debug.Log("Now : " + _mainPlayer.GetComponent<MainCharacter>()._speed);
         }
-        else if (ch1 == "RateOfFire")
+        else if (ch3 == "RateOfFire")
         {
+            Debug.Log("Rate : " + _gun.GetComponent<GunPivotScript>()._bulletPerSecond);
             _gun.GetComponent<GunPivotScript>()._bulletPerSecond += _bulletPerSecondToAdd;
+            Debug.Log("Now : " + _gun.GetComponent<GunPivotScript>()._bulletPerSecond);
         }
-        else if (ch1 == "Life")
+        else if (ch3 == "Life")
         {
             _mainPlayer.GetComponent<MainCharacter>()._health += _healthToAdd;
             _mainPlayer.GetComponent<MainCharacter>().UpdateHealthBar();
         }
-        else if (ch1 == "TimeToDraw")
+        else if (ch3 == "TimeToDraw")
         {
             _logicManager.GetComponent<LogicScript>()._slowness += _slownessToAdd;
         }
