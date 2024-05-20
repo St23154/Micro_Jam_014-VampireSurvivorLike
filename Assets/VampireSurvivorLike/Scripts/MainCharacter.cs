@@ -7,6 +7,7 @@ public class MainCharacter : MonoBehaviour
 {
     public float _speed = 2f;
     public float xp = 0;
+    private float _maxXP = 50;
     public float _health = 100;
     public GameObject _arrows;
     private Vector3 _target;
@@ -20,6 +21,7 @@ public class MainCharacter : MonoBehaviour
     private bool _canTakeDamage = true;
     private float _time = 0;
     public Image _HealthBarFill;
+    public Image _XPBarFill;
 
 
     private void Awake()
@@ -30,6 +32,7 @@ public class MainCharacter : MonoBehaviour
 
     void Start()
     {
+        UpdateXPBar();
         _health = 100;
         _maxHealth = _health;
         _speed = 2f;
@@ -137,41 +140,11 @@ public class MainCharacter : MonoBehaviour
             _experience.Collect();
             AudioManager.instance.Play("Coin");
             xp += 10;
-            if (xp == 50)
+            UpdateXPBar();
+            if (xp == _maxXP)
             {
                 _levelupScript.MoreLevel();
-            }
-            if (xp == 150)
-            {
-                _levelupScript.MoreLevel();
-            }
-            if (xp == 300)
-            {
-                _levelupScript.MoreLevel();
-            }
-            if (xp == 500)
-            {
-                _levelupScript.MoreLevel();
-            }
-            if (xp == 1000)
-            {
-                _levelupScript.MoreLevel();
-            }
-            if (xp == 2000)
-            {
-                _levelupScript.MoreLevel();
-            }
-            if (xp == 4000)
-            {
-                _levelupScript.MoreLevel();
-            }
-            if (xp == 8000)
-            {
-                _levelupScript.MoreLevel();
-            }
-            if (xp == 16000)
-            {
-                _levelupScript.MoreLevel();
+                _maxXP *= 2;
             }
         }
 
@@ -218,6 +191,12 @@ public class MainCharacter : MonoBehaviour
     {
         AudioManager.instance.Play("GameOver");
         SceneManager.LoadSceneAsync(0);
+    }
+
+    public void UpdateXPBar()
+    {
+        float fillAmount = xp / _maxXP; 
+        _XPBarFill.fillAmount = fillAmount;
     }
 
 }
