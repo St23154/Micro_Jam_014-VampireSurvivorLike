@@ -145,6 +145,7 @@ public class MainCharacter : MonoBehaviour
             {
                 _levelupScript.MoreLevel();
                 _maxXP *= 2;
+                xp = 0;
             }
         }
 

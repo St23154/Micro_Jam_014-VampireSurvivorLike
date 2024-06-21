@@ -13,9 +13,9 @@ public class Ennemy_ZombieAI : MonoBehaviour
     public Transform _player;
     public Vector3 _tourne;
     public Vector3 _tourne1;
-    NavMeshAgent _agent;
     private Animator _animator;
     public float _health = 100;
+    public float _speed;
     private float i = 0f;
     private float piecesnumber = 0f;
 
@@ -28,15 +28,13 @@ public class Ennemy_ZombieAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _agent = GetComponent<NavMeshAgent>();
-        _agent.updateRotation = false;
-        _agent.updateUpAxis = false;
-        _agent.avoidancePriority = UnityEngine.Random.Range(0, 100);
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.position = Vector2.MoveTowards(this.transform.position, _player.transform.position, _speed * Time.deltaTime);
+
         if(transform.eulerAngles != _tourne && transform.eulerAngles != _tourne1)
         {
             if(transform.eulerAngles.y - _tourne.y < transform.eulerAngles.y - _tourne1.y)
@@ -62,7 +60,6 @@ public class Ennemy_ZombieAI : MonoBehaviour
             transform.Rotate(_tourne);
             }
         }
-        _agent.SetDestination(_player.position);
     }
 
     public void TakeDamage(float _amount)
@@ -71,6 +68,7 @@ public class Ennemy_ZombieAI : MonoBehaviour
         if (_health <= 0)
         {
             Destroy(gameObject);
+            AudioManager.instance.Play("EnnemyDeath");
             piecesnumber = UnityEngine.Random.Range(3,5);
             for(i=0; i<= piecesnumber; i++)
             {
